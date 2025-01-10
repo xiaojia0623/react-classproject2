@@ -25,10 +25,9 @@ function App() {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    axios.post(`${BASE_URL}/v2/admin/signin`, myAccount)
+    axios.post(`${BASE_URL}v2/admin/signin`, myAccount)
       .then((res) => {
         const {token, expired} = res.data;
-        console.log(token, expired);
         document.cookie = `jojo123456=${token}; expires=${expired}`;
         //var myCookie = document.cookie.replace(/(?:(?:^|.*;\s*)test2\s*\=\s*([^;]*).*$)|^.*$/,"$1",);
         axios.defaults.headers.common['Authorization'] = token;
